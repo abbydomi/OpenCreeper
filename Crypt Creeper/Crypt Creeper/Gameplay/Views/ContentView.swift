@@ -245,7 +245,7 @@ struct ContentView: View {
                         EmptyView()
                     }
                     NavigationLink(isActive: $scene.showGameOver) {
-                        GameOverView(currentScore: scene.score, scene: scene)
+                        OldGameOverView(currentScore: scene.score, scene: scene)
                     } label: {
                         EmptyView()
                     }

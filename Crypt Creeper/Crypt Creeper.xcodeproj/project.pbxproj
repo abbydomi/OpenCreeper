@@ -22,7 +22,7 @@
 		28A09B2929B039CB000C7DBE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A09B2429B039CA000C7DBE /* ContentView.swift */; };
 		28A09B2A29B039CB000C7DBE /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A09B2529B039CA000C7DBE /* ShopView.swift */; };
 		28A09B2B29B039CB000C7DBE /* WinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A09B2629B039CA000C7DBE /* WinView.swift */; };
-		28A09B2C29B039CB000C7DBE /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A09B2729B039CB000C7DBE /* GameOverView.swift */; };
+		28A09B2C29B039CB000C7DBE /* GameOverView-OLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A09B2729B039CB000C7DBE /* GameOverView-OLD.swift */; };
 		28AA776D29819AC400953AD3 /* SanMarinoBeach.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28AA776C29819AC400953AD3 /* SanMarinoBeach.ttf */; };
 		28CC64C429AFC42B007FFB1A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CC64C329AFC42B007FFB1A /* GameScene.swift */; };
 		28D180A329B04026009AADAC /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D180A229B04026009AADAC /* Tile.swift */; };
@@ -78,7 +78,7 @@
 		28A09B2429B039CA000C7DBE /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		28A09B2529B039CA000C7DBE /* ShopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
 		28A09B2629B039CA000C7DBE /* WinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinView.swift; sourceTree = "<group>"; };
-		28A09B2729B039CB000C7DBE /* GameOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
+		28A09B2729B039CB000C7DBE /* GameOverView-OLD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameOverView-OLD.swift"; sourceTree = "<group>"; };
 		28AA776C29819AC400953AD3 /* SanMarinoBeach.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SanMarinoBeach.ttf; sourceTree = "<group>"; };
 		28CC64C329AFC42B007FFB1A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		28D180A229B04026009AADAC /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
@@ -207,7 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				28A09B2429B039CA000C7DBE /* ContentView.swift */,
-				28A09B2729B039CB000C7DBE /* GameOverView.swift */,
+				28A09B2729B039CB000C7DBE /* GameOverView-OLD.swift */,
 				28A09B2529B039CA000C7DBE /* ShopView.swift */,
 				28A09B2329B039CA000C7DBE /* TempleView.swift */,
 				28A09B2629B039CA000C7DBE /* WinView.swift */,
@@ -448,7 +448,7 @@
 				2F8B6B2D29AA982000710391 /* NetworkHelper.swift in Sources */,
 				2F8B6B4129AD395E00710391 /* Camera&Gallery.swift in Sources */,
 				486CBBE629B541F900C8C2CD /* SettingsViewExtension.swift in Sources */,
-				28A09B2C29B039CB000C7DBE /* GameOverView.swift in Sources */,
+				28A09B2C29B039CB000C7DBE /* GameOverView-OLD.swift in Sources */,
 				2FD2184D29B7C7DC0051CA79 /* UserModel.swift in Sources */,
 				2F8B6B2929AA73F500710391 /* SignUpExtensions.swift in Sources */,
 				2F8B6B3A29AD1D9000710391 /* FactionsView.swift in Sources */,

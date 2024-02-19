@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GameOverView: View {
+struct OldGameOverView: View {
     @Environment(\.dismiss) private var dismiss
     @State var currentScore:Int
     @ObservedObject var scene:GameScene
@@ -93,6 +93,6 @@ struct GameOverView: View {
 
 struct GameOverView_Previews: PreviewProvider {
     static var previews: some View {
-        GameOverView(currentScore: 99999, scene: GameScene())
+        OldGameOverView(currentScore: 99999, scene: GameScene())
     }
 }
