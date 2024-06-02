@@ -72,12 +72,12 @@ struct WinView: View {
                             scene.reset()
                             dismiss()
                         } label: {
-                            MenuButtonLabel(title: "PLAY AGAIN")
+                            MenuButton(title: "PLAY AGAIN")
                         }
                         Button {
                             
                         } label: {
-                            MenuButtonLabel(title: "GO BACK")
+                            MenuButton(title: "GO BACK")
                         }
                     }
                 }

@@ -14,6 +14,9 @@
 		284CDCC22C0D1E700046382F /* SplashView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 284CDCC12C0D1E700046382F /* SplashView.storyboard */; };
 		284FBEA3296C61ED0029C958 /* Crypt_CreeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284FBEA2296C61ED0029C958 /* Crypt_CreeperApp.swift */; };
 		284FBEA7296C61EE0029C958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 284FBEA6296C61EE0029C958 /* Assets.xcassets */; };
+		285302B62C0D216300C64A53 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285302B52C0D216300C64A53 /* MenuButton.swift */; };
+		285302B82C0D2BCF00C64A53 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285302B72C0D2BCF00C64A53 /* PrimaryButton.swift */; };
+		285302BB2C0D303600C64A53 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285302BA2C0D303600C64A53 /* LeaderboardView.swift */; };
 		2855C08F29ABD9DA00351002 /* UIPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855C08E29ABD9DA00351002 /* UIPill.swift */; };
 		28A09B2029B03972000C7DBE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A09B1F29B03972000C7DBE /* HomeView.swift */; };
 		28A09B2829B039CB000C7DBE /* TempleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A09B2329B039CA000C7DBE /* TempleView.swift */; };
@@ -47,6 +50,9 @@
 		284FBE9F296C61ED0029C958 /* Crypt Creeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crypt Creeper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		284FBEA2296C61ED0029C958 /* Crypt_CreeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypt_CreeperApp.swift; sourceTree = "<group>"; };
 		284FBEA6296C61EE0029C958 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		285302B52C0D216300C64A53 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		285302B72C0D2BCF00C64A53 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		285302BA2C0D303600C64A53 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		2855C08E29ABD9DA00351002 /* UIPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPill.swift; sourceTree = "<group>"; };
 		28A09B1F29B03972000C7DBE /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		28A09B2329B039CA000C7DBE /* TempleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempleView.swift; sourceTree = "<group>"; };
@@ -115,6 +121,7 @@
 				284CDCC02C0D1E5F0046382F /* SplashView */,
 				2F8B6B2A29AA773700710391 /* Home */,
 				48F3F40329AA78E100FD0F58 /* HowToPlay */,
+				285302B92C0D300700C64A53 /* LeaderboardView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -157,6 +164,23 @@
 				283F5533296C8CBF0055AF58 /* Preview Content */,
 			);
 			path = "Crypt Creeper";
+			sourceTree = "<group>";
+		};
+		285302B42C0D215400C64A53 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				285302B52C0D216300C64A53 /* MenuButton.swift */,
+				285302B72C0D2BCF00C64A53 /* PrimaryButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		285302B92C0D300700C64A53 /* LeaderboardView */ = {
+			isa = PBXGroup;
+			children = (
+				285302BA2C0D303600C64A53 /* LeaderboardView.swift */,
+			);
+			path = LeaderboardView;
 			sourceTree = "<group>";
 		};
 		28CC64C029AFC105007FFB1A /* Gameplay */ = {
@@ -210,6 +234,7 @@
 		2F8F3DF7299EABF8004E6700 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				285302B42C0D215400C64A53 /* Buttons */,
 				2F8F3DF3299E93EC004E6700 /* TextFields.swift */,
 				2F8F3DF5299E9733004E6700 /* Texts.swift */,
 				2F8F3DF1299E7E5F004E6700 /* PopUps.swift */,
@@ -307,6 +332,7 @@
 			files = (
 				2F4400FB29B1314C00F154ED /* Images.swift in Sources */,
 				48F3F40529AA797000FD0F58 /* HowToPlayExtension.swift in Sources */,
+				285302B62C0D216300C64A53 /* MenuButton.swift in Sources */,
 				28A09B2929B039CB000C7DBE /* ContentView.swift in Sources */,
 				28CC64C429AFC42B007FFB1A /* GameScene.swift in Sources */,
 				28D180A329B04026009AADAC /* Tile.swift in Sources */,
@@ -316,8 +342,10 @@
 				2F8F3DF6299E9733004E6700 /* Texts.swift in Sources */,
 				28D274E02975C5EB00E2CA16 /* ColorExtension.swift in Sources */,
 				28A09B2C29B039CB000C7DBE /* GameOverView.swift in Sources */,
+				285302B82C0D2BCF00C64A53 /* PrimaryButton.swift in Sources */,
 				28A09B2B29B039CB000C7DBE /* WinView.swift in Sources */,
 				28F9F33829AE6C4B00DFEA13 /* Item.swift in Sources */,
+				285302BB2C0D303600C64A53 /* LeaderboardView.swift in Sources */,
 				284FBEA3296C61ED0029C958 /* Crypt_CreeperApp.swift in Sources */,
 				2F8F3DF4299E93EC004E6700 /* TextFields.swift in Sources */,
 				48F3F40029AA35F100FD0F58 /* HowToPlayView.swift in Sources */,

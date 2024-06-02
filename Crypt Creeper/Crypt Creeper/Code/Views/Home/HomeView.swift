@@ -11,91 +11,107 @@ struct HomeView: View {
     
     // MARK: - Properties
     
+    @State var showGame = false
     @State var showHowToPlay = false
     @State var showSettings = false
-    @State var showProfile = false
     @State var showLeaderboards = false
     
     // MARK: - Body
     
     var body: some View {
         NavigationStack {
-            GeometryReader { geo in
-                ZStack{
-                    VStack{
-                        Color.ui.colorBGPinkDark
-                            .padding(-10)
-                        Color.ui.colorBGBlack
-                    }
-                    Image(uiImage: UIImage(named: "ImageBGTitle03")!)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: geo.size.width)
-                    Image("ImageBGTitle02")
+            ZStack{
+                HomeViewBackground()
+                VStack {
+                    Image("CryptCreeperLogo")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: geo.size.width)
-                    VStack{
-                        Spacer()
-                        Image("ImageBGTitle01")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: geo.size.width)
-                            .padding(-10)
-                        Rectangle()
-                            .foregroundColor(Color.ui.colorBGBlack)
-                            .frame(width: geo.size.width, height: geo.size.width/4)
+                        .padding()
+                    Spacer()
+                    VStack {
+                        Button("PLAY") {
+                           showGame = true
+                        }
+                        .buttonStyle(PrimaryButton())
+                        Button("HOW TO PLAY") {
+                            showHowToPlay = true
+                        }
+                        .buttonStyle(PrimaryButton())
+                        HStack {
+                            Button(action: {
+                                showLeaderboards = true
+                            }, label: {
+                                Image(systemName: "trophy.fill")
+                            })
+                            .buttonStyle(PrimaryButton())
+                            
+                            Button(action: {
+                                showSettings = true
+                            }, label: {
+                                Image(systemName: "gearshape.fill")
+                            })
+                            .buttonStyle(PrimaryButton())
+                        }
                     }
-                    Image("ImageKeyHero")
-                        .resizable()
-                        .scaledToFit()
-                        .aspectRatio(contentMode: .fit)
-                    VStack{
-                        VStack(alignment: .center){
-                            
-                            Image("ImageCryptCreeperLogo")
-                                .resizable()
-                                .scaledToFit()
-                                .padding(.horizontal, 10)
-                                .padding(.top,50)
-                            Spacer()
-                            
-                        }
-                        Spacer()
-                        NavigationLink(destination: ContentView()) {
-                            MenuButtonLabel(title: "PLAY")
-                        }
-                        Button {
-                            showHowToPlay.toggle()
-                        } label: {
-                            MenuButtonLabel(title: "HOW TO PLAY")
-                        }
-                        HStack{
-                            Button {
-                                //Profile
-                                showProfile.toggle()
-                            } label: {
-                                MenuButtonImageLabel(SFSymbolName: "person.fill")
-                            }
-                            Button {
-                                //Leaderboards
-                                showLeaderboards.toggle()
-                            } label: {
-                                MenuButtonImageLabel(SFSymbolName: "trophy.fill")
-                            }
-                            Button {
-                                //Settings
-                                showSettings.toggle()
-                            } label: {
-                                MenuButtonImageLabel(SFSymbolName: "gearshape.fill")
-                            }
-                        }
-                    }.padding(.bottom, 30)
+                    .padding()
                 }
-                .ignoresSafeArea()
+                
+                // Window views
                 HowToPlayView(show: $showHowToPlay)
+                LeaderboardView(show: $showLeaderboards)
+                
+                // Navigation
+                Color.clear
+                    .navigationDestination(isPresented: $showGame) {
+                        ContentView()
+                    }
             }
         }
+    }
+}
+
+struct HomeViewBackground: View {
+    
+    var body: some View {
+        ZStack {
+            // Color is clear to use overlay and display images properly, there's a swiftui
+            // bug that makes all other images .fill if the background is .fill
+            Color.clear
+                .overlay {
+                    Color.ui.colorBGPinkDark
+                    Image("ImageBGTitle03")
+                        .resizable()
+                        .scaledToFill()
+                }
+            VStack {
+                Spacer()
+                Image("ImageBGTitle02")
+                    .resizable()
+                    .scaledToFit()
+                Rectangle()
+                    .fill(Color.ui.colorBGPurple)
+                    .frame(height: 225)
+                    .padding(.top, -25)
+            }
+            VStack {
+                Spacer()
+                Image("ImageBGTitle01")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(.trailing, -50)
+                Rectangle()
+                    .fill(Color.ui.colorBGBlack)
+                    .frame(height: 150)
+                    .padding(.top, -25)
+            }
+            Image("TitleKeyHero")
+                .resizable()
+                .scaledToFit()
+                .padding()
+            
+        }
+        .ignoresSafeArea()
+        
     }
 }
 
