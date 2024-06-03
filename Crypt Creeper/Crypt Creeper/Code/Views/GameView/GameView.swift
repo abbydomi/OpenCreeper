@@ -10,10 +10,11 @@ import SpriteKit
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        GameView()
     }
 }
-struct ContentView: View {
+struct GameView: View {
+    
     @StateObject var scene: GameScene = {
         let scene = GameScene()
         scene.size = CGSize(width: 100, height: 100)
@@ -232,29 +233,22 @@ struct ContentView: View {
                     }
                 }
                 .ignoresSafeArea() //Navigation
-                .sheet(isPresented: $scene.showShop) {
-                    ShopView()
-                }
-                .sheet(isPresented: $scene.showTemple) {
-                    TempleView()
-                }
-                ZStack{
-                    NavigationLink(isActive: $scene.showWin) {
-                        WinView(currentScore: scene.score, scene: scene)
-                    } label: {
-                        EmptyView()
-                    }
-                    NavigationLink(isActive: $scene.showGameOver) {
-                        GameOverView(currentScore: scene.score, scene: scene)
-                    } label: {
-                        EmptyView()
-                    }
-
-                }
-                .hidden()
                 
+                // Navigation
+                Color.clear
+                    .navigationDestination(isPresented: $scene.showGameOver) {
+                        GameOverView(currentScore: scene.score, scene: scene)
+                    }
+                    .navigationDestination(isPresented: $scene.showWin) {
+                        WinView(currentScore: scene.score, scene: scene)
+                    }
+                    .sheet(isPresented: $scene.showShop) {
+                        ShopView()
+                    }
+                    .sheet(isPresented: $scene.showTemple) {
+                        TempleView()
+                    }
             }
-            
         }
         .navigationBarBackButtonHidden(true)
         .environmentObject(scene)

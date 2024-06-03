@@ -63,7 +63,7 @@ struct HomeView: View {
                 // Navigation
                 Color.clear
                     .navigationDestination(isPresented: $showGame) {
-                        ContentView()
+                        GameView()
                     }
             }
         }

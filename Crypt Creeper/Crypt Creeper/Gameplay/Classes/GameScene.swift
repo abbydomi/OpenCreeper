@@ -10,6 +10,7 @@ import SpriteKit
 import SwiftUI
 
 @MainActor class GameScene: SKScene, ObservableObject {
+    
     @Published var coins:Int = 0
     @Published var health:Int = 3
     @Published var maxHealth:Int = 3

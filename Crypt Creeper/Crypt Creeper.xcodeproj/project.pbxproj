@@ -20,7 +20,7 @@
 		2855C08F29ABD9DA00351002 /* UIPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2855C08E29ABD9DA00351002 /* UIPill.swift */; };
 		28A09B2029B03972000C7DBE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A09B1F29B03972000C7DBE /* HomeView.swift */; };
 		28A09B2829B039CB000C7DBE /* TempleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A09B2329B039CA000C7DBE /* TempleView.swift */; };
-		28A09B2929B039CB000C7DBE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A09B2429B039CA000C7DBE /* ContentView.swift */; };
+		28A09B2929B039CB000C7DBE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A09B2429B039CA000C7DBE /* GameView.swift */; };
 		28A09B2A29B039CB000C7DBE /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A09B2529B039CA000C7DBE /* ShopView.swift */; };
 		28A09B2B29B039CB000C7DBE /* WinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A09B2629B039CA000C7DBE /* WinView.swift */; };
 		28A09B2C29B039CB000C7DBE /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A09B2729B039CB000C7DBE /* GameOverView.swift */; };
@@ -56,7 +56,7 @@
 		2855C08E29ABD9DA00351002 /* UIPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPill.swift; sourceTree = "<group>"; };
 		28A09B1F29B03972000C7DBE /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		28A09B2329B039CA000C7DBE /* TempleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempleView.swift; sourceTree = "<group>"; };
-		28A09B2429B039CA000C7DBE /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		28A09B2429B039CA000C7DBE /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		28A09B2529B039CA000C7DBE /* ShopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
 		28A09B2629B039CA000C7DBE /* WinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinView.swift; sourceTree = "<group>"; };
 		28A09B2729B039CB000C7DBE /* GameOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
@@ -122,6 +122,7 @@
 				2F8B6B2A29AA773700710391 /* Home */,
 				48F3F40329AA78E100FD0F58 /* HowToPlay */,
 				285302B92C0D300700C64A53 /* LeaderboardView */,
+				28872AE12C0DBE32003390A4 /* GameView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,6 +184,14 @@
 			path = LeaderboardView;
 			sourceTree = "<group>";
 		};
+		28872AE12C0DBE32003390A4 /* GameView */ = {
+			isa = PBXGroup;
+			children = (
+				28A09B2429B039CA000C7DBE /* GameView.swift */,
+			);
+			path = GameView;
+			sourceTree = "<group>";
+		};
 		28CC64C029AFC105007FFB1A /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +205,6 @@
 		28CC64C129AFC11A007FFB1A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				28A09B2429B039CA000C7DBE /* ContentView.swift */,
 				28A09B2729B039CB000C7DBE /* GameOverView.swift */,
 				28A09B2529B039CA000C7DBE /* ShopView.swift */,
 				28A09B2329B039CA000C7DBE /* TempleView.swift */,
@@ -333,7 +341,7 @@
 				2F4400FB29B1314C00F154ED /* Images.swift in Sources */,
 				48F3F40529AA797000FD0F58 /* HowToPlayExtension.swift in Sources */,
 				285302B62C0D216300C64A53 /* MenuButton.swift in Sources */,
-				28A09B2929B039CB000C7DBE /* ContentView.swift in Sources */,
+				28A09B2929B039CB000C7DBE /* GameView.swift in Sources */,
 				28CC64C429AFC42B007FFB1A /* GameScene.swift in Sources */,
 				28D180A329B04026009AADAC /* Tile.swift in Sources */,
 				2F8F3DF2299E7E5F004E6700 /* PopUps.swift in Sources */,
