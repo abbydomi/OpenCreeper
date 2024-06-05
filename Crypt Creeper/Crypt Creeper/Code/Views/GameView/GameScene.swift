@@ -8,8 +8,9 @@
 import Foundation
 import SpriteKit
 import SwiftUI
+import Combine
 
-@MainActor class GameScene: SKScene, ObservableObject {
+class GameScene: SKScene, ObservableObject {
     
     @Published var coins:Int = 0
     @Published var health:Int = 3
@@ -20,17 +21,18 @@ import SwiftUI
     @Published var swordPower:Int = 0
     @Published var shieldPower:Int = 0
     @Published var inventorySlots:[Item] = []
-
-    @Published var showShop:Bool = false
-    @Published var showTemple:Bool = false
-    @Published var showWin:Bool = false
-    @Published var showGameOver:Bool = false
     
     private let intSize = 15
     private var locations:[Array<CGFloat>] = []
     
-    func reset(){
-        print("game was reset!!!")
+    private var initialized = false
+    
+    private let state: CurrentValueSubject<GameState, Never>  = .init(.game)
+    
+    func reset() {
+        if !initialized {
+            return
+        }
         maxHealth = 3
         health = 3
         coins = 0
@@ -138,7 +140,11 @@ import SwiftUI
             }
         }
     }
-    func createBoard(){
+    
+    func createBoard() {
+        
+        initialized = false
+        
         let portalrandomX = Int.random(in: 1...5)
         var enemyAmount = 0
         var potionAmount = 0
@@ -221,6 +227,8 @@ import SwiftUI
                 addChild(newTile)
             }
         }
+        
+        initialized = true
     }
     func addPowerLabel(tile: Tile){
         if tile.power != 0{
@@ -259,7 +267,6 @@ import SwiftUI
                     }
                 }
                 if !canMove {
-                    //showGameOver = true
                     return
                 }
                 switch(destination.name){
@@ -281,7 +288,7 @@ import SwiftUI
                         damage-=1
                     }
                     if health == 0 {
-                       showGameOver = true
+                        goToGameEnd()
                     }
                     score+=destination.power*10
                     switch(destination.power){
@@ -304,9 +311,9 @@ import SwiftUI
                 case "SWORD":
                     swordPower = destination.power
                 case "SHOP":
-                    showShop = true
+                    state.send(.shop)
                 case "TEMPLE":
-                    showTemple = true
+                    state.send(.temple)
                 case "BOSS":
                     var damage = destination.power
                     while damage != 0 && swordPower != 0 {
@@ -322,9 +329,9 @@ import SwiftUI
                         damage-=1
                     }
                     if health == 0 {
-                       showGameOver = true
+                       goToGameEnd()
                     } else {
-                        showWin = true
+                        state.send(.win)
                     }
                 default: break
                     
@@ -877,5 +884,21 @@ import SwiftUI
         
         return [posX, posY]
     }
+    
+    func goToGameEnd() {
+        state.send(.gameOver)
+    }
+    
+    func getState() -> CurrentValueSubject<GameState, Never> {
+        return state
+    }
   
+}
+
+enum GameState {
+    case game
+    case gameOver
+    case win
+    case shop
+    case temple
 }

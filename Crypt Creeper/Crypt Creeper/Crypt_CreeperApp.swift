@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct Crypt_CreeperApp: App {
+    @StateObject var router = Router()
     var body: some Scene {
         WindowGroup {
-           HomeView()
+            HomeView()
+                .environmentObject(router)
         }
     }
 }

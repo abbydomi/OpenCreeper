@@ -7,14 +7,18 @@
 
 import SwiftUI
 import SpriteKit
+import Combine
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         GameView()
     }
 }
+
 struct GameView: View {
     
+    @EnvironmentObject var router: Router
+    @State private var cancellables = Set<AnyCancellable>()
     @StateObject var scene: GameScene = {
         let scene = GameScene()
         scene.size = CGSize(width: 100, height: 100)
@@ -22,9 +26,8 @@ struct GameView: View {
         scene.backgroundColor = UIColor(named: "ColorGameBackground")!
         return scene
     }()
-    
-    @State var showGameOver:Bool = false
-    @State var showWin:Bool = false
+    @State private var showTemple = false
+    @State private var showShop = false
     
     private var shieldImage:String {
         return "ICON_SHIELD_\(scene.shieldPower)"
@@ -119,11 +122,6 @@ struct GameView: View {
                                 }
                             }
                             .frame(width: 90, height: 20, alignment: .center)
-                            .onTapGesture {
-                                scene.increaseInventory()
-                                scene.showShop = true
-                                scene.coins = 100
-                            }
                             Spacer()
                             Text("LVL: \(uiLevel)")
                                 .foregroundColor(Color.ui.text)
@@ -225,32 +223,46 @@ struct GameView: View {
                             Text(": \(uiXP)")
                                 .foregroundColor(Color.ui.textGreen)
                                 .font(.system(size: 18, weight: .heavy, design: .rounded))
-                            
-                            
                         }
                         .padding(.horizontal, 12)
                         Spacer()
                     }
                 }
-                .ignoresSafeArea() //Navigation
-                
-                // Navigation
-                Color.clear
-                    .navigationDestination(isPresented: $scene.showGameOver) {
-                        GameOverView(currentScore: scene.score, scene: scene)
-                    }
-                    .navigationDestination(isPresented: $scene.showWin) {
-                        WinView(currentScore: scene.score, scene: scene)
-                    }
-                    .sheet(isPresented: $scene.showShop) {
-                        ShopView()
-                    }
-                    .sheet(isPresented: $scene.showTemple) {
-                        TempleView()
-                    }
+                .ignoresSafeArea()
+                .sheet(isPresented: $showShop) {
+                    ShopView()
+                }
+                .sheet(isPresented: $showTemple) {
+                    TempleView()
+                }
             }
         }
+        .onAppear(perform: {
+            bind()
+        })
         .navigationBarBackButtonHidden(true)
-        .environmentObject(scene)
+    }
+    
+    func bind() {
+        scene.getState().sink { state in
+            switch state {
+            case .game:
+                break
+            case .gameOver:
+                let score = uiScore
+                scene.reset()
+                router.nextView(.gameEnd(score, .gameOver))
+            case .win:
+                let score = uiScore
+                scene.reset()
+                router.nextView(.gameEnd(uiScore, .win))
+            case .shop:
+                showShop = true
+            case .temple:
+                showTemple = true
+            }
+        }
+        .store(in: &cancellables)
     }
 }
+

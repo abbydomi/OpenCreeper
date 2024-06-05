@@ -10,18 +10,19 @@ import SwiftUI
 struct HomeView: View {
     
     // MARK: - Properties
-    
-    @State var showGame = false
+
     @State var showHowToPlay = false
     @State var showSettings = false
     @State var showLeaderboards = false
     
+    @EnvironmentObject var router: Router
+    
     // MARK: - Body
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $router.path) {
             ZStack{
-                HomeViewBackground()
+                HomeBackgroundView()
                 VStack {
                     Image("CryptCreeperLogo")
                         .resizable()
@@ -30,7 +31,7 @@ struct HomeView: View {
                     Spacer()
                     VStack {
                         Button("PLAY") {
-                           showGame = true
+                            router.nextView(.game)
                         }
                         .buttonStyle(PrimaryButton())
                         Button("HOW TO PLAY") {
@@ -56,21 +57,25 @@ struct HomeView: View {
                     .padding()
                 }
                 
-                // Window views
+                // MARK: - Navigation
+                
+                // Pop up views
                 HowToPlayView(show: $showHowToPlay)
                 LeaderboardView(show: $showLeaderboards)
                 
-                // Navigation
                 Color.clear
-                    .navigationDestination(isPresented: $showGame) {
-                        GameView()
+                    .navigationDestination(for: RoutePath.self) { route in
+                        switch(route) {
+                        case .game: GameView()
+                        case.gameEnd(let score, let type): GameEndView(score: score, type: type)
+                        }
                     }
             }
         }
     }
 }
 
-struct HomeViewBackground: View {
+struct HomeBackgroundView: View {
     
     var body: some View {
         ZStack {
@@ -118,5 +123,6 @@ struct HomeViewBackground: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(Router())
     }
 }
